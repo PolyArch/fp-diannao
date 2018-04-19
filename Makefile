@@ -9,7 +9,6 @@ all: $(MODULE)
 
 HEADERS=dnn.hpp
 
-#Tii not in convolution
 # These tiling parameters are 100% arbitrary, and it may be advantageous to tune/remove/completely-change them for GPU
 conv1: convolution.cpp $(HEADERS)
 	$(CPP) $^ $(CFLAGS) -static -o $@ -DNx=224 -DNy=224 -DKx=3  -DKy=3  -DNi=64  -DNn=64        -DTii=32 -DTi=16  -DTnn=32 -DTn=16 -DTx=7 -DTy=7
@@ -24,5 +23,5 @@ class2: classifier.cpp $(HEADERS)
 	$(CPP) $^ $(CFLAGS) -static -o $@ -DNi=4096 -DNn=1024    -DTii=32 -DTi=32      -DTnn=32  -DTn=16
 
 clean:
-	@rm -f $(MODULE) convolution pooling classifier $(DFG_HEADERS)
+	@rm -f $(MODULE) 
 
