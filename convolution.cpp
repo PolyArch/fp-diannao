@@ -49,7 +49,7 @@ void fill_convolution_shared_simple(VTYPE (&synapse)[Ky][Kx][Nn][Ni],
   }  }  }
 }
 
-std::pair<int,int> convolution_layer_blocked(
+void convolution_layer_blocked(
                               VTYPE (&synapse)[Ky][Kx][Nn][Ni], 
                               VTYPE (&neuron_i)[NYPAD][NXPAD][Ni], 
                               VTYPE (&neuron_n)[NYSCL][NXSCL][Nn]) {

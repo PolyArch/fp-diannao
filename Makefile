@@ -1,6 +1,8 @@
 CPP=g++
 
-CFLAGS=$(OPT) --std=c++11 -g -ggdb -gdwarf-3 -O3
+OPT?=-O3
+
+CFLAGS= --std=c++11 -g -ggdb -gdwarf-3 $(OPT) -fsanitize=address
 MODULE          := conv1 conv2 class1 class2
 
 .PHONY: all clean
