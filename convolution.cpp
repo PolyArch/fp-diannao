@@ -142,8 +142,6 @@ void  convolution_layer(VTYPE (&synapse)[Ky][Kx][Nn][Ni],
 
 
 int main(const int argc, const char** argv) {
-  cout << "allocating memory\n";
-
   synapse   = (VTYPE (*)[Ky][Kx][Nn][Ni])  aligned_malloc(64,  SYNAPSE_SIZE*sizeof(VTYPE));
   neuron_i  = (VTYPE (*)[NYPAD][NXPAD][Ni])aligned_malloc(64,NYPAD*NXPAD*Ni*sizeof(VTYPE));
   neuron_n  = (VTYPE (*)[NYSCL][NXSCL][Nn])aligned_malloc(64,NYSCL*NXSCL*Nn*sizeof(VTYPE));
@@ -162,18 +160,14 @@ int main(const int argc, const char** argv) {
 
   cout << "simple version complete!\n";  
 
-
   //Blocked Version
   begin_roi();
   convolution_layer_blocked(*synapse,*neuron_i,*neuron_n2);
   end_roi();
 
-
   cout << "blocked computation complete!\n";  
 
   compare((VTYPE*)*neuron_n,(VTYPE*)*neuron_n2,NYSCL*NXSCL*Nn);
-
-  cout << "done\n";
 }
 
 
