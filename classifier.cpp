@@ -96,7 +96,5 @@ int main(int argc, char** argv) {
   cout << "blocked computation complete!\n";  
 
   compare(neuron_n,neuron_n2,Nn);
-
-  cout << "done\n";
 }
 
